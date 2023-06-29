@@ -11,9 +11,7 @@ public class DemoMain{
         System.out.println(in);
     }
 
-    private void addExpense(Expense xpense){
-        monthly_expenses.add(xpense);
-    }
+  
 
 
 
@@ -23,6 +21,7 @@ public class DemoMain{
         monthly_expenses = new ArrayList<Expense>();
         income_list = new ArrayList<Income>();
         Scanner scn = new Scanner(System.in);
+
         
         String source;
         double amount;
@@ -32,6 +31,8 @@ public class DemoMain{
         double totalExpenses = 0.0;
         double totalIncomes = 0.0;
 
+        Income tempIncome;
+        Expense tempExpense;
 
         
         boolean latch = true;
@@ -48,6 +49,8 @@ public class DemoMain{
 
             switch (scn.nextInt()){
                 case 1:
+                    scn.nextLine();
+
                     print("What's the expense source?");
                     source = scn.nextLine();
 
@@ -65,32 +68,43 @@ public class DemoMain{
 
 
                 case 2:
+                    scn.nextLine();
+
                     print("What's the income source?");
                     source = scn.nextLine();
 
 
                     print("what's the amount");
                     amount = scn.nextDouble();
+                    scn.nextLine();
 
                     print("what month is it paid in?");
                     Mnth = scn.nextLine();
 
                     totalIncomes += amount; 
 
+
                     income_list.add(new Income(source, amount, Mnth));
                     break;
+                    
                 case 3:
                     print("expenses:");
                     if (monthly_expenses.size() > 0){
                         for (int i = 0; i< monthly_expenses.size(); i++){
-                            System.out.println(monthly_expenses.get(i));
+                            tempExpense = monthly_expenses.get(i);
+                            System.out.println(tempExpense.source);
+                            System.out.println(tempExpense.amount);
+                            System.out.println(tempExpense.yearlyfrequency);
                         }
                     }
                     
-                    print("incomes:")
+                    print("incomes:");
                     if (income_list.size() >0){
                         for (int i = 0; i< income_list.size(); i++){
-                            System.out.println(income_list.get(i));
+                            tempIncome = income_list.get(i);
+                            System.out.println(tempIncome.source);
+                            System.out.println(tempIncome.amount);
+                            System.out.println(tempIncome.Month);
                         }
                     }
                     break;
