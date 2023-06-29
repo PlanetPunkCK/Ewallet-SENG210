@@ -61,7 +61,7 @@ public class DemoMain{
                     totalExpenses = amount * frq;
 
                     monthly_expenses.add(new Expense(source, amount, frq));
-
+                    break;
 
 
                 case 2:
@@ -78,7 +78,7 @@ public class DemoMain{
                     totalIncomes += amount; 
 
                     income_list.add(new Income(source, amount, Mnth));
-
+                    break;
                 case 3:
                     print("expenses:");
                     if (monthly_expenses.size() > 0){
@@ -93,17 +93,20 @@ public class DemoMain{
                             System.out.println(income_list.get(i));
                         }
                     }
+                    break;
                 case 4:
                     print("total incomes");
                     System.out.println(totalExpenses);
                     print("total expenses");
                     System.out.println(totalIncomes);
-
+                    break;
                 case 5:
                     print("goodbye");
                     latch = false;
+                    break;
                 default:
                 print("invalid input");
+                
             }
         }
 
