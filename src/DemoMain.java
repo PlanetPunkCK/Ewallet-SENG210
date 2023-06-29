@@ -43,6 +43,7 @@ public class DemoMain{
             print("2: add income");
             print("3: print out expenses and incomes so far");
             print("4: view stats");
+            print("5: quit");
 
 
             switch (scn.nextInt()){
@@ -99,7 +100,8 @@ public class DemoMain{
                     System.out.println(totalIncomes);
 
                 case 5:
-
+                    print("goodbye");
+                    latch = false;
                 default:
                 print("invalid input");
             }
