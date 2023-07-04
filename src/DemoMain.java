@@ -110,9 +110,9 @@ public class DemoMain{
                     break;
                 case 4:
                     print("total incomes");
-                    System.out.println(totalExpenses);
-                    print("total expenses");
                     System.out.println(totalIncomes);
+                    print("total expenses");
+                    System.out.println(totalExpenses);
                     break;
                 case 5:
                     print("goodbye");
