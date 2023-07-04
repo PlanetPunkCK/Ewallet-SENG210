@@ -125,7 +125,7 @@ public boolean makeReport(User writeData, String filename){
         
 
         output.println(headers)
-        for(int i = 0; i<1;i++){
+        for(int i = 0; i<repeats;i++){
         output.println(line);
         }
         output.close();
