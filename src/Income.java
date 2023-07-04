@@ -9,6 +9,10 @@ public class Income {
 		this.amount = amnt;
 		this.Month = Mnth;
 	}
-	
+	public Income(){
+		this.source = "default";
+		this.amount = 0;
+		this.Month = "default";
+	}
 	//should add contructor(s)
 }

@@ -2,8 +2,10 @@ import java.util.ArrayList;
 
 public class User {
 	private ArrayList <Currency>currencyRates;
+
 	private ArrayList <Income>Income;  // user income sources that user can record or view or search by type or month 
 	private ArrayList <Expense>Spending; //user's expenses 
+
 	String username;
 	String pwd;
 	//current total income - total 
