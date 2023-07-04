@@ -44,12 +44,12 @@ import java.util.ArrayList;
 public class IOCtrl {
     
 //save all data to csv
-String headers = "src,amnt,mnth,src,amnt,freq\n";
+String headers = "src,amnt,mnth,src,amnt,freq";
 String Filepath ;
 ArrayList<String> lines;
 User tempUser;
 
-private String lineBuilder(User buildData, int index, int sml){
+private String lineBuilder(User buildData, int index){
 //todo: 
 //-enable functionality to allow for cvs to have blank spots where no values exist 
 // such as in the case of more user has more expenses than incomes or vice versa
@@ -58,7 +58,25 @@ String blankline = ",,,";
 
 
 
-if (buildData.incomes.size() == sml){
+if (index > buildData.Spending.size()){ //if index is larger than size of spending, ommit spending from returned string
+    Income incIemp = buildData.incomes.get(index);
+   
+
+    returnable = incIemp.source + ","
+                +incIemp.amount + ","
+                +incIemp.Month + 
+                blankline;
+
+}else if(index > buildData.incomes.size()){ //if index is larger than size ofo incomes, omit incomes from returned string
+    
+    Expense exTemp = buildData.Spending.get(index);
+
+    returnable = blankline
+                +exTemp.amount + "," 
+                +exTemp.source + ","
+                +exTemp.yearlyfrequency;
+
+}else{//else, it must be within range and all can be returned in formatted return string
     Income incIemp = buildData.incomes.get(index);
     Expense exTemp = buildData.Spending.get(index);
 
@@ -68,12 +86,10 @@ if (buildData.incomes.size() == sml){
                 +exTemp.amount + "," 
                 +exTemp.source + ","
                 +exTemp.yearlyfrequency;
-}else if(buildData.Spending.size() == sml){
-
 }
 
 
-return "dodo";
+return returnable;
 };
 
 
@@ -100,7 +116,7 @@ public boolean makeReport(User writeData, String filename){
 
     //build lines with lineBuilder 
     for (int j = 0; j < repeats; j++){
-        lines.add(lineBuilder(writeData, j, smaller));
+        lines.add(lineBuilder(writeData, j));
     }
 
     //meat and potatoes, using printwriter to print lines built above to a file with header of .csv
@@ -108,7 +124,7 @@ public boolean makeReport(User writeData, String filename){
         PrintWriter output = new PrintWriter(filename + ".csv");
         
 
-        output.print(headers)
+        output.println(headers)
         for(int i = 0; i<1;i++){
         output.println(line);
         }
