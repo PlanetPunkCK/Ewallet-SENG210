@@ -53,8 +53,8 @@ private String lineBuilder(User buildData, int index, int sml){
 //todo: 
 //-enable functionality to allow for cvs to have blank spots where no values exist 
 // such as in the case of more user has more expenses than incomes or vice versa
-String returnable;
-String blankline = ",,,";
+//String returnable;
+//String blankline = ",,,";
 
 
 
