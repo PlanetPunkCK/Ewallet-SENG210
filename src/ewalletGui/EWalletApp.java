@@ -90,10 +90,19 @@ public class EWalletApp extends JFrame {
 		addEbtn.setHorizontalAlignment(SwingConstants.LEFT);
 		contentPane.add(addEbtn);
 		
-		JButton btnNewButton_1 = new JButton("Add Income");
-		btnNewButton_1.setFont(new Font("Tahoma", Font.BOLD, 10));
-		btnNewButton_1.setBounds(330, 150, 115, 25);
-		contentPane.add(btnNewButton_1);
+		JButton addIbtn = new JButton("Add Income");
+		addIbtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(e.getSource() == addIbtn) {
+					addIncome addIncome = new addIncome();
+					addIncome.setVisible(true);
+				}
+			}
+			
+		});
+		addIbtn.setFont(new Font("Tahoma", Font.BOLD, 10));
+		addIbtn.setBounds(330, 150, 115, 25);
+		contentPane.add(addIbtn);
 		
 		JButton btnNewButton_2 = new JButton("Income Report");
 		btnNewButton_2.setFont(new Font("Tahoma", Font.BOLD, 10));
