@@ -16,9 +16,9 @@ import javax.swing.JButton;
 public class addExpense extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
+	private JTextField sourceField;
+	private JTextField amountField;
+	private JTextField timesField;
 
 	/**
 	 * Launch the application.
@@ -69,30 +69,39 @@ public class addExpense extends JFrame {
 		lblNewLabel_3.setBounds(40, 170, 125, 25);
 		contentPane.add(lblNewLabel_3);
 		
-		textField = new JTextField();
-		textField.setFont(new Font("Tahoma", Font.PLAIN, 11));
-		textField.setBounds(185, 80, 95, 20);
-		contentPane.add(textField);
-		textField.setColumns(10);
+		sourceField = new JTextField();
+		sourceField.setFont(new Font("Tahoma", Font.PLAIN, 11));
+		sourceField.setBounds(185, 80, 95, 20);
+		contentPane.add(sourceField);
+		sourceField.setColumns(10);
 		
-		textField_1 = new JTextField();
-		textField_1.setFont(new Font("Tahoma", Font.PLAIN, 11));
-		textField_1.setBounds(185, 120, 95, 20);
-		contentPane.add(textField_1);
-		textField_1.setColumns(10);
+		amountField = new JTextField();
+		amountField.setFont(new Font("Tahoma", Font.PLAIN, 11));
+		amountField.setBounds(185, 120, 95, 20);
+		contentPane.add(amountField);
+		amountField.setColumns(10);
 		
-		textField_2 = new JTextField();
-		textField_2.setBounds(185, 170, 95, 20);
-		contentPane.add(textField_2);
-		textField_2.setColumns(10);
+		timesField = new JTextField();
+		timesField.setBounds(185, 170, 95, 20);
+		contentPane.add(timesField);
+		timesField.setColumns(10);
 		
 		JButton btnNewButton = new JButton("Add");
 		btnNewButton.setBounds(170, 220, 85, 20);
 		contentPane.add(btnNewButton);
 		
-		JButton btnNewButton_1 = new JButton("Clear");
-		btnNewButton_1.setBounds(265, 220, 85, 20);
-		contentPane.add(btnNewButton_1);
+		JButton clearbtn = new JButton("Clear");
+		clearbtn.setBounds(265, 220, 85, 20);
+		clearbtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(e.getSource() == clearbtn) {
+					sourceField.setText("");
+					amountField.setText("");
+					timesField.setText("");
+				}
+			}
+		});
+		contentPane.add(clearbtn);
 		
 		JButton Mbtn = new JButton("Main Menu");
 		Mbtn.setBounds(10, 230, 85, 20);

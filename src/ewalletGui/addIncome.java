@@ -17,8 +17,8 @@ import javax.swing.JButton;
 public class addIncome extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField textField;
-	private JTextField textField_1;
+	private JTextField sourceField;
+	private JTextField amountField;
 
 	/**
 	 * Launch the application.
@@ -69,30 +69,41 @@ public class addIncome extends JFrame {
 		lblNewLabel_3.setBounds(40, 170, 125, 25);
 		contentPane.add(lblNewLabel_3);
 		
-		textField = new JTextField();
-		textField.setBounds(175, 81, 96, 19);
-		contentPane.add(textField);
-		textField.setColumns(10);
+		sourceField = new JTextField();
+		sourceField.setBounds(175, 81, 96, 19);
+		contentPane.add(sourceField);
+		sourceField.setColumns(10);
 		
-		textField_1 = new JTextField();
-		textField_1.setBounds(175, 118, 96, 19);
-		contentPane.add(textField_1);
-		textField_1.setColumns(10);
+		amountField = new JTextField();
+		amountField.setBounds(175, 118, 96, 19);
+		contentPane.add(amountField);
+		amountField.setColumns(10);
 		
 		String months[] = {"-", "JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"};
-		JComboBox comboBox = new JComboBox(months);
-		comboBox.setFont(new Font("Tahoma", Font.BOLD, 11));
-		comboBox.setMaximumRowCount(12);
-		comboBox.setBounds(175, 172, 85, 21);
-		contentPane.add(comboBox);
+		JComboBox monthComboBox = new JComboBox(months);
+		monthComboBox.setFont(new Font("Tahoma", Font.BOLD, 11));
+		monthComboBox.setMaximumRowCount(12);
+		monthComboBox.setBounds(175, 172, 85, 21);
+		contentPane.add(monthComboBox);
 		
 		JButton btnNewButton = new JButton("Add");
 		btnNewButton.setBounds(175, 220, 85, 21);
 		contentPane.add(btnNewButton);
 		
-		JButton btnNewButton_1 = new JButton("Clear");
-		btnNewButton_1.setBounds(283, 220, 85, 21);
-		contentPane.add(btnNewButton_1);
+		JButton clearbtn = new JButton("Clear");
+		clearbtn.setBounds(283, 220, 85, 21);
+		clearbtn.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e) {
+				if(e.getSource() == clearbtn) {
+					sourceField.setText("");
+					amountField.setText("");
+					monthComboBox.setSelectedIndex(0);
+				}
+				
+			}
+		});
+		contentPane.add(clearbtn);
+		
 		
 		JButton Mbtn = new JButton("Main Menu");
 		Mbtn.setBounds(10, 232, 85, 21);
