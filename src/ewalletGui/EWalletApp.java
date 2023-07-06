@@ -43,7 +43,7 @@ public class EWalletApp extends JFrame {
 	public EWalletApp() {
 		setTitle("E-Wallet");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 588, 344);
+		setBounds(100, 100, 609, 350);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -51,7 +51,7 @@ public class EWalletApp extends JFrame {
 		
 		JLabel lblNewLabel = new JLabel("Welcome to E-Wallet!");
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setBounds(255, 25, 130, 15);
+		lblNewLabel.setBounds(250, 25, 130, 15);
 		contentPane.add(lblNewLabel);
 		
 		JLabel label = new JLabel("");
@@ -59,7 +59,7 @@ public class EWalletApp extends JFrame {
 		contentPane.add(label);
 		
 		JLabel lblNewLabel_1 = new JLabel("Your Money Management System");
-		lblNewLabel_1.setBounds(227, 47, 192, 13);
+		lblNewLabel_1.setBounds(220, 47, 192, 13);
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
 		contentPane.add(lblNewLabel_1);
 		
@@ -69,7 +69,7 @@ public class EWalletApp extends JFrame {
 		
 		JLabel lblNewLabel_2 = new JLabel("Choose an option:");
 		lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_2.setBounds(267, 70, 113, 13);
+		lblNewLabel_2.setBounds(260, 70, 113, 13);
 		contentPane.add(lblNewLabel_2);
 		
 		JLabel label_2 = new JLabel("");
@@ -80,6 +80,9 @@ public class EWalletApp extends JFrame {
 		addEbtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(e.getSource()== addEbtn) {
+					// close previous window, open new
+					dispose();
+					
 					addExpense addExpense = new addExpense();
 					addExpense.setVisible(true);
 				}
@@ -94,6 +97,7 @@ public class EWalletApp extends JFrame {
 		addIbtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(e.getSource() == addIbtn) {
+					dispose();
 					addIncome addIncome = new addIncome();
 					addIncome.setVisible(true);
 				}

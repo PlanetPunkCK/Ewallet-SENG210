@@ -99,6 +99,8 @@ public class addExpense extends JFrame {
 		Mbtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(e.getSource()== Mbtn) {
+					// close previous window, open new
+					dispose();
 					EWalletApp main_menu = new EWalletApp();
 					main_menu.setVisible(true);
 				}

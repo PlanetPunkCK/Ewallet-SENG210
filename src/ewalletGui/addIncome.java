@@ -79,7 +79,8 @@ public class addIncome extends JFrame {
 		contentPane.add(textField_1);
 		textField_1.setColumns(10);
 		
-		JComboBox comboBox = new JComboBox();
+		String months[] = {"-", "JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"};
+		JComboBox comboBox = new JComboBox(months);
 		comboBox.setFont(new Font("Tahoma", Font.BOLD, 11));
 		comboBox.setMaximumRowCount(12);
 		comboBox.setBounds(175, 172, 85, 21);
@@ -98,6 +99,8 @@ public class addIncome extends JFrame {
 		Mbtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(e.getSource()== Mbtn) {
+					// close previous window, open new
+					dispose();
 					EWalletApp main_menu = new EWalletApp();
 					main_menu.setVisible(true);
 				}
