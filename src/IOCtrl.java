@@ -3,11 +3,15 @@ import java.util.ArrayList;
 
 /*
  * TODO:
- * -Write all data in given User 
+ * /d for done
+ * /i for in progress
+ * /a for aborted
+ * -Write all data in given User /i
  *      -ARGUMENTS:
- *          -current user as User object
+ *          -current user as User object/d
  *      -RETURNS:
  *          -success in writing as Boolean
+ *              -true for success and vice versa
  *      -PRODUCES:
  *          -CSV file with userName + "Data.csv"
  * 
@@ -43,7 +47,7 @@ import java.util.ArrayList;
 
 public class IOCtrl {
     
-//save all data to csv
+//save all data to csvchad
 String headers = "src,amnt,mnth,src,amnt,freq";
 String Filepath ;
 ArrayList<String> lines;
@@ -98,7 +102,7 @@ public boolean makeReport(User writeData, String filename){
     boolean success = false;
     String line = "test";
     int repeats;
-    int smaller;
+    
 
     ArrayList<String> lines = new ArrayList<String>();
     
@@ -107,11 +111,9 @@ public boolean makeReport(User writeData, String filename){
 
     //determine how many rows will be in final report by the size of the larger of the incomes or spending lists
     if (writeData.incomes.size()> writeData.Spending.size()){
-        repeats = writeData.incomes.size();
-        smaller = writeData.Spending.size();
-    }else{
         repeats = writeData.Spending.size();
-        smaller = writeData.incomes.size();
+    }else{
+        repeats = writeData.incomes.size();
     }
 
     //build lines with lineBuilder 
@@ -124,14 +126,16 @@ public boolean makeReport(User writeData, String filename){
         PrintWriter output = new PrintWriter(filename + ".csv");
         
 
-        output.println(headers)
+        output.println(headers);
         for(int i = 0; i<repeats;i++){
-        output.println(line);
+        output.println(lines.get(i));
         }
         output.close();
+        success = true;//should have output csv properly if you get here, success 
     }
     catch(Exception e) {
         e.getStackTrace();
+        success = false;//if you're here, something's wrong
     }
 
     

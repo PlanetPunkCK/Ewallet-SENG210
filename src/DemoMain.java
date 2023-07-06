@@ -3,9 +3,6 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class DemoMain{
-
-    public static ArrayList<Expense> monthly_expenses;
-    public static ArrayList<Income> income_list;
     
     public static void print(String in){
         System.out.println(in);
@@ -14,11 +11,11 @@ public class DemoMain{
 
     public static void main(String[] args) {
         
+        User curUser = new User();
         
-        monthly_expenses = new ArrayList<Expense>();
-        income_list = new ArrayList<Income>();
+        
         Scanner scn = new Scanner(System.in);
-
+        IOCtrl CSVCtrl = new IOCtrl();
         
         String source;
         double amount;
@@ -34,6 +31,12 @@ public class DemoMain{
         
         boolean latch = true;
 
+
+        print("what's your Username?:");
+        curUser.username = scn.nextLine();
+
+
+
         while (latch){
             print("choose an option: ");
 
@@ -41,7 +44,8 @@ public class DemoMain{
             print("2: add income");
             print("3: print out expenses and incomes so far");
             print("4: view stats");
-            print("5: quit");
+            print("5: output CSV in local directory");
+            print("6: quit");
 
 
             switch (scn.nextInt()){
@@ -60,7 +64,7 @@ public class DemoMain{
 
                     totalExpenses = amount * frq;
 
-                    monthly_expenses.add(new Expense(source, amount, frq));
+                    curUser.Spending.add(new Expense(source, amount, frq));
                     break;
 
 
@@ -81,27 +85,29 @@ public class DemoMain{
                     totalIncomes += amount; 
 
 
-                    income_list.add(new Income(source, amount, Mnth));
+                    curUser.incomes.add(new Income(source, amount, Mnth));
                     break;
                     
                 case 3:
                     print("expenses:");
-                    if (monthly_expenses.size() > 0){
-                        for (int i = 0; i< monthly_expenses.size(); i++){
-                            tempExpense = monthly_expenses.get(i);
+                    if (curUser.Spending.size() > 0){
+                        for (int i = 0; i< curUser.Spending.size(); i++){
+                            tempExpense = curUser.Spending.get(i);
                             System.out.println(tempExpense.source);
                             System.out.println(tempExpense.amount);
                             System.out.println(tempExpense.yearlyfrequency);
+                            print("_______________");
                         }
                     }
                     
                     print("incomes:");
-                    if (income_list.size() >0){
-                        for (int i = 0; i< income_list.size(); i++){
-                            tempIncome = income_list.get(i);
+                    if (curUser.incomes.size() >0){
+                        for (int i = 0; i< curUser.incomes.size(); i++){
+                            tempIncome = curUser.incomes.get(i);
                             System.out.println(tempIncome.source);
                             System.out.println(tempIncome.amount);
                             System.out.println(tempIncome.Month);
+                            print("_______________");
                         }
                     }
                     break;
@@ -112,7 +118,14 @@ public class DemoMain{
                     System.out.println(totalExpenses);
                     break;
                 case 5:
-                    print("goodbye");
+                    if (CSVCtrl.makeReport(curUser, curUser.username)){
+                        print("success outputing CSV"); //When implementing into GUI, replace this with simple alert message
+                    }else{
+                        print("fail outputting CSV"); //this too
+                    }
+                    break;
+                case 6:
+                    print("goodbye");//get creative for this one, could be a goodbye alert or just an unceremonious close app
                     latch = false;
                     break;
                 default:
@@ -120,6 +133,6 @@ public class DemoMain{
                 
             }
         }
-
+        scn.close();
     }
 }
