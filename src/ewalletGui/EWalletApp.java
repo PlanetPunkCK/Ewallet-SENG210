@@ -25,24 +25,17 @@ public class EWalletApp extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField usernameField;
+	private JTextField pwdField;
 	
 	IOCtrl CSVCtrl = new IOCtrl();
 	String username;
 	String pwd;
 	User curUser = new User();
-	
-	String source;
-    double amount;
-    int frq;
-    String Mnth;
 
-    double totalExpenses = 0.0;
     double totalIncomes = 0.0;
 
     Income tempIncome;
     Expense tempExpense;
-    private JTextField pwdField;
-
 	/**
 	 * Launch the application.
 	 */
@@ -113,6 +106,8 @@ public class EWalletApp extends JFrame {
 			}
 					
 		});
+		// for testing
+		System.out.println("Current User is: " + curUser);
 		contentPane.add(signinbtn);
 		
 		// Title Labels
@@ -207,8 +202,6 @@ public class EWalletApp extends JFrame {
 		quitbtn.setFont(new Font("Tahoma", Font.BOLD, 10));
 		quitbtn.setBounds(261, 261, 115, 25);
 		contentPane.add(quitbtn);
-		
-		
-		
+
 	}
 }

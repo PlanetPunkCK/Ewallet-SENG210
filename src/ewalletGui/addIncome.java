@@ -19,6 +19,8 @@ public class addIncome extends JFrame {
 	private JPanel contentPane;
 	private JTextField sourceField;
 	private JTextField amountField;
+	
+	Income tempIncome;
 
 	/**
 	 * Launch the application.

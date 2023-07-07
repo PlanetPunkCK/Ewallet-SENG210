@@ -9,6 +9,7 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.JTextField;
 import javax.swing.JButton;
@@ -20,9 +21,14 @@ public class addExpense extends JFrame {
 	private JTextField amountField;
 	private JTextField freqField;
 	
+    Expense tempExpense;
+    
+	double totalExpenses = 0.0;
+	
 	String srcs[] = {"-", "Bills", "Business", "Clothing", "Groceries", "Tools"};
 	double amt;
 	int yrFreq;
+	
 	
 
 	/**
@@ -96,9 +102,8 @@ public class addExpense extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				if(e.getSource() == addbtn) {
 					// access the curUser and add expenses/spending
-					// Expense expense = new Expense(srcs, amt, yrFreq);
-					//curUser.Spending.add(expense);
-
+					String curUser = User.username;
+					curUser.Spending.add(new Expense(srcs, amt, yrFreq));
 				}
 			}
 		});

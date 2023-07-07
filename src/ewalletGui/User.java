@@ -5,7 +5,7 @@ public class User {
 	//private ArrayList <Currency>currencyRates;
 	public ArrayList <Income>incomes;  // user income sources that user can record or view or search by type or month 
 	public ArrayList <Expense>Spending; //user's expenses 
-	String username;
+	static String username;
 	String pwd;
 	//current total income - total 
 	double balance;
