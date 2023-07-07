@@ -125,7 +125,7 @@ public class addExpense extends JFrame {
 		
 		// Main Menu Button
 		JButton Mbtn = new JButton("Main Menu");
-		Mbtn.setBounds(10, 240, 85, 20);
+		Mbtn.setBounds(10, 230, 85, 20);
 		Mbtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(e.getSource()== Mbtn) {

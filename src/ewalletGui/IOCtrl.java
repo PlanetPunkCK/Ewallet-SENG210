@@ -25,7 +25,7 @@ import java.util.ArrayList;
  *      -stores Built line in ArrayList "lines" of type String 
  *      -RETURNS: lines 
  * 
- * 
+ * -write expense and income saveing 
  * 
  * 
  * -Write filter method for income and expense reports
@@ -54,12 +54,19 @@ String Filepath ;
 ArrayList<String> lines;
 User tempUser;
 
+public IOCtrl(){
+    lines = new ArrayList<String>();
+    tempUser = new User();
+}
+
+
+
 private String lineBuilder(User buildData, int index){
 //todo: 
 //-enable functionality to allow for cvs to have blank spots where no values exist 
 // such as in the case of more user has more expenses than incomes or vice versa
-//String returnable;
-//String blankline = ",,,";
+String returnable;
+String blankline = ",,,";
 
 
 
@@ -98,14 +105,14 @@ return returnable;
 };
 
 
+
+
 public boolean makeReport(User writeData, String filename){
     
     boolean success = false;
-    String line = "test";
     int repeats;
     
 
-    ArrayList<String> lines = new ArrayList<String>();
     
     //automatically add header
     lines.add(headers);
@@ -138,10 +145,6 @@ public boolean makeReport(User writeData, String filename){
         e.getStackTrace();
         success = false;//if you're here, something's wrong
     }
-
-    
-
-
     return success;
 }
 

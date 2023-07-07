@@ -25,4 +25,8 @@ public class User {
 		username = "unset";
 		pwd = "unset";
 	}
+	
+	public String getUsername() {
+	    return username;
+	}
 }

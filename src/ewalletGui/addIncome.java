@@ -21,6 +21,10 @@ public class addIncome extends JFrame {
 	private JTextField amountField;
 	
 	Income tempIncome;
+	double totalIncomes = 0.0;
+	String src;
+	String Mnth;
+	double amt;
 
 	/**
 	 * Launch the application.
@@ -51,25 +55,25 @@ public class addIncome extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("Add An Income");
-		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 16));
-		lblNewLabel.setBounds(30, 25, 160, 25);
-		contentPane.add(lblNewLabel);
+		JLabel addILabel = new JLabel("Add An Income");
+		addILabel.setFont(new Font("Tahoma", Font.BOLD, 16));
+		addILabel.setBounds(30, 25, 160, 25);
+		contentPane.add(addILabel);
 		
-		JLabel lblNewLabel_1 = new JLabel("Source:");
-		lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 11));
-		lblNewLabel_1.setBounds(40, 75, 60, 30);
-		contentPane.add(lblNewLabel_1);
+		JLabel srcLabel = new JLabel("Source:");
+		srcLabel.setFont(new Font("Tahoma", Font.BOLD, 11));
+		srcLabel.setBounds(40, 75, 60, 30);
+		contentPane.add(srcLabel);
 		
-		JLabel lblNewLabel_2 = new JLabel("Amount:");
-		lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD, 11));
-		lblNewLabel_2.setBounds(40, 115, 80, 25);
-		contentPane.add(lblNewLabel_2);
+		JLabel amtLabel = new JLabel("Amount:");
+		amtLabel.setFont(new Font("Tahoma", Font.BOLD, 11));
+		amtLabel.setBounds(40, 115, 80, 25);
+		contentPane.add(amtLabel);
 		
-		JLabel lblNewLabel_3 = new JLabel("Month Paid In:");
-		lblNewLabel_3.setFont(new Font("Tahoma", Font.BOLD, 11));
-		lblNewLabel_3.setBounds(40, 170, 125, 25);
-		contentPane.add(lblNewLabel_3);
+		JLabel monthLabel = new JLabel("Month Paid In:");
+		monthLabel.setFont(new Font("Tahoma", Font.BOLD, 11));
+		monthLabel.setBounds(40, 170, 125, 25);
+		contentPane.add(monthLabel);
 		
 		sourceField = new JTextField();
 		sourceField.setBounds(175, 81, 96, 19);
@@ -88,10 +92,23 @@ public class addIncome extends JFrame {
 		monthComboBox.setBounds(175, 172, 85, 21);
 		contentPane.add(monthComboBox);
 		
-		JButton btnNewButton = new JButton("Add");
-		btnNewButton.setBounds(175, 220, 85, 21);
-		contentPane.add(btnNewButton);
 		
+		// Add Button
+		JButton addbtn = new JButton("Add");
+		addbtn.setBounds(175, 220, 85, 21);
+		addbtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(e.getSource() == addbtn) {
+					// access the curUser and add income/incomes
+					String curUser = User.username;
+					curUser.incomes.add(new Income(src, amt, Mnth));
+					totalIncomes += amt;
+				}
+			}
+		});
+		contentPane.add(addbtn);
+		
+		// Clear Button
 		JButton clearbtn = new JButton("Clear");
 		clearbtn.setBounds(283, 220, 85, 21);
 		clearbtn.addActionListener(new ActionListener(){
@@ -108,7 +125,7 @@ public class addIncome extends JFrame {
 		
 		
 		JButton Mbtn = new JButton("Main Menu");
-		Mbtn.setBounds(10, 232, 85, 21);
+		Mbtn.setBounds(10, 230, 85, 20);
 		Mbtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(e.getSource()== Mbtn) {

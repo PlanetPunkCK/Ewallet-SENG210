@@ -1,10 +1,14 @@
 package ewalletGui;
 
 import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.JButton;
+import java.awt.Font;
 
 public class Other extends JFrame {
 
@@ -36,6 +40,22 @@ public class Other extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		JButton Mbtn = new JButton("Main Menu");
+		Mbtn.setFont(new Font("Tahoma", Font.PLAIN, 10));
+		Mbtn.setBounds(10, 230, 85, 20);
+		Mbtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(e.getSource()== Mbtn) {
+					// close previous window, open new
+					dispose();
+					EWalletApp main_menu = new EWalletApp();
+					main_menu.setVisible(true);
+				}
+			}
+		});
+		contentPane.add(Mbtn);
 	}
 
 }

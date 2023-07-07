@@ -2,14 +2,13 @@ package ewalletGui;
 
 import java.util.ArrayList;
 import java.awt.EventQueue;
-
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import java.awt.Window.Type;
 import java.awt.FlowLayout;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 import javax.swing.JButton;
 import java.awt.GridLayout;
@@ -32,7 +31,6 @@ public class EWalletApp extends JFrame {
 	String pwd;
 	User curUser = new User();
 
-    double totalIncomes = 0.0;
 
     Income tempIncome;
     Expense tempExpense;
@@ -102,12 +100,16 @@ public class EWalletApp extends JFrame {
 					// for testing, delete later
 					System.out.println(pwd);
 					User curUser = new User(username, pwd);
+					JOptionPane.showMessageDialog(contentPane, "Hello " + curUser.toString() + "!");
+					usernameField.setText("");
+					pwdField.setText("");
+					
 				}				
 			}
 					
 		});
-		// for testing
-		System.out.println("Current User is: " + curUser);
+		// for testing delete later
+		System.out.println("Current User is: " + curUser.toString());
 		contentPane.add(signinbtn);
 		
 		// Title Labels
@@ -176,31 +178,65 @@ public class EWalletApp extends JFrame {
 		// Income Report
 		JButton iReportbtn = new JButton("Income Report");
 		iReportbtn.setFont(new Font("Tahoma", Font.BOLD, 10));
+		iReportbtn.setBounds(136, 226, 115, 25);
 		iReportbtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				// need to do
+				if(e.getSource() == iReportbtn) {
+					dispose();
+					IncomeReport IncomeReport = new IncomeReport();
+					IncomeReport.setVisible(true);
+				}
 				
 			}
 		});
-		iReportbtn.setBounds(136, 226, 115, 25);
+		
 		contentPane.add(iReportbtn);
 		
 		// Expense Report
 		JButton eReportbtn = new JButton("Expense Report");
 		eReportbtn.setFont(new Font("Tahoma", Font.BOLD, 10));
 		eReportbtn.setBounds(261, 226, 115, 25);
+		eReportbtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(e.getSource() == eReportbtn) {
+					dispose();
+					ExpenseReport ExpenseReport = new ExpenseReport();
+					ExpenseReport.setVisible(true);
+				}
+			}
+		});
 		contentPane.add(eReportbtn);
 		
 		// Other Stats
-		JButton btnNewButton_4 = new JButton("Other Stats");
-		btnNewButton_4.setFont(new Font("Tahoma", Font.BOLD, 10));
-		btnNewButton_4.setBounds(136, 261, 115, 25);
-		contentPane.add(btnNewButton_4);
+		JButton statsbtn = new JButton("Quick Stats");
+		statsbtn.setFont(new Font("Tahoma", Font.BOLD, 10));
+		statsbtn.setBounds(136, 261, 115, 25);
+		statsbtn.addActionListener(new ActionListener () {
+			public void actionPerformed(ActionEvent e) {
+				if(e.getSource() == statsbtn) {
+					dispose();
+					Other stats = new Other();
+					stats.setVisible(true);
+				}
+			}
+		});
 		
-		// Save and Quit
-		JButton quitbtn = new JButton("Save and Quit");
+		contentPane.add(statsbtn);
+		
+		// Quit
+		JButton quitbtn = new JButton("Quit");
 		quitbtn.setFont(new Font("Tahoma", Font.BOLD, 10));
 		quitbtn.setBounds(261, 261, 115, 25);
+		quitbtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(e.getSource() == quitbtn) {
+					JOptionPane.showMessageDialog(contentPane, "Thank you for using E-Wallet. Goodbye!");
+					dispose();
+				}
+			}
+		});
+		
+		
 		contentPane.add(quitbtn);
 
 	}
