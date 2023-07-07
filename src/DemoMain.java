@@ -45,7 +45,7 @@ public class DemoMain{
             print("3: print out expenses and incomes so far");
             print("4: view stats");
             print("5: output CSV in local directory");
-            print("6: quit");
+            print("7: quit");
 
 
             switch (scn.nextInt()){
@@ -125,6 +125,11 @@ public class DemoMain{
                     }
                     break;
                 case 6:
+                        //print("What's the price of the item you wanna save for?");
+                        //int saving = scn.nextDouble();
+                        //scn.nextLine();
+                        //break;
+                case 7:
                     print("goodbye");//get creative for this one, could be a goodbye alert or just an unceremonious close app
                     latch = false;
                     break;
