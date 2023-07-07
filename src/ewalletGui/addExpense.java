@@ -12,13 +12,18 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JTextField;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 
 public class addExpense extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField sourceField;
 	private JTextField amountField;
-	private JTextField timesField;
+	private JTextField freqField;
+	
+	String srcs[] = {"-", "Bills", "Business", "Clothing", "Groceries", "Tools"};
+	double amt;
+	int yrFreq;
+	
 
 	/**
 	 * Launch the application.
@@ -49,62 +54,73 @@ public class addExpense extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("Add An Expense");
-		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 16));
-		lblNewLabel.setBounds(30, 25, 160, 25);
-		contentPane.add(lblNewLabel);
+		JLabel expenseLabel = new JLabel("Add An Expense");
+		expenseLabel.setFont(new Font("Tahoma", Font.BOLD, 16));
+		expenseLabel.setBounds(30, 25, 160, 25);
+		contentPane.add(expenseLabel);
 		
-		JLabel lblNewLabel_1 = new JLabel("Source:");
-		lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 11));
-		lblNewLabel_1.setBounds(40, 75, 60, 30);
-		contentPane.add(lblNewLabel_1);
+		JLabel sourceLabel = new JLabel("Source:");
+		sourceLabel.setFont(new Font("Tahoma", Font.BOLD, 11));
+		sourceLabel.setBounds(40, 75, 60, 30);
+		contentPane.add(sourceLabel);
 		
-		JLabel lblNewLabel_2 = new JLabel("Amount:");
-		lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD, 11));
-		lblNewLabel_2.setBounds(40, 115, 80, 25);
-		contentPane.add(lblNewLabel_2);
+		JLabel amountLabel = new JLabel("Amount:");
+		amountLabel.setFont(new Font("Tahoma", Font.BOLD, 11));
+		amountLabel.setBounds(38, 120, 80, 25);
+		contentPane.add(amountLabel);
 		
-		JLabel lblNewLabel_3 = new JLabel("Times Paid Per Year:");
-		lblNewLabel_3.setFont(new Font("Tahoma", Font.BOLD, 11));
-		lblNewLabel_3.setBounds(40, 170, 125, 25);
-		contentPane.add(lblNewLabel_3);
+		JLabel freqLabel = new JLabel("Times Paid Per Year:");
+		freqLabel.setFont(new Font("Tahoma", Font.BOLD, 11));
+		freqLabel.setBounds(40, 170, 125, 25);
+		contentPane.add(freqLabel);
 		
-		sourceField = new JTextField();
-		sourceField.setFont(new Font("Tahoma", Font.PLAIN, 11));
-		sourceField.setBounds(185, 80, 95, 20);
-		contentPane.add(sourceField);
-		sourceField.setColumns(10);
+		JComboBox srcBox = new JComboBox(srcs);
+		srcBox.setBounds(185, 80, 90, 20);
+		contentPane.add(srcBox);
 		
 		amountField = new JTextField();
 		amountField.setFont(new Font("Tahoma", Font.PLAIN, 11));
-		amountField.setBounds(185, 120, 95, 20);
+		amountField.setBounds(185, 120, 90, 20);
 		contentPane.add(amountField);
 		amountField.setColumns(10);
 		
-		timesField = new JTextField();
-		timesField.setBounds(185, 170, 95, 20);
-		contentPane.add(timesField);
-		timesField.setColumns(10);
+		freqField = new JTextField();
+		freqField.setBounds(185, 172, 30, 20);
+		contentPane.add(freqField);
+		freqField.setColumns(10);
 		
-		JButton btnNewButton = new JButton("Add");
-		btnNewButton.setBounds(170, 220, 85, 20);
-		contentPane.add(btnNewButton);
+		// Add Button
+		JButton addbtn = new JButton("Add");
+		addbtn.setBounds(170, 220, 85, 20);
+		addbtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(e.getSource() == addbtn) {
+					// access the curUser and add expenses/spending
+					// Expense expense = new Expense(srcs, amt, yrFreq);
+					//curUser.Spending.add(expense);
+
+				}
+			}
+		});
+		contentPane.add(addbtn);
 		
+		// Clear Button
 		JButton clearbtn = new JButton("Clear");
 		clearbtn.setBounds(265, 220, 85, 20);
 		clearbtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(e.getSource() == clearbtn) {
-					sourceField.setText("");
+					srcBox.setSelectedIndex(0);
 					amountField.setText("");
-					timesField.setText("");
+					freqField.setText("");
 				}
 			}
 		});
 		contentPane.add(clearbtn);
 		
+		// Main Menu Button
 		JButton Mbtn = new JButton("Main Menu");
-		Mbtn.setBounds(10, 230, 85, 20);
+		Mbtn.setBounds(10, 240, 85, 20);
 		Mbtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(e.getSource()== Mbtn) {
