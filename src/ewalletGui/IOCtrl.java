@@ -148,5 +148,81 @@ public boolean makeReport(User writeData, String filename){
     return success;
 }
 
+public static boolean writeObjectsToFile(User uIn) { //returns void, writes information from given user
+    boolean a = false;
+    boolean b = false;
+	try (PrintWriter writer = new PrintWriter(new FileWriter(uIn.getUsername() +"Incomes.txt"))) {
+        for (Income obj : uIn.incomes) {
+            // Assuming the object has three attributes: attr1, attr2, attr3
+            writer.println(obj.source + "," + obj.amount + "," + obj.Month);
+        }
+        a = true;
+        writer.close();
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+    try (PrintWriter writer = new PrintWriter(new FileWriter(uIn.getUsername() +"Expenses.txt"))) {
+        for (Expense obj : uIn.Spending) {
+            // Assuming the object has three attributes: attr1, attr2, attr3
+            writer.println(obj.source + "," + obj.amount + "," + obj.yearlyfrequency);
+        }
+        b = true;
+        writer.close();
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+    if(a && b) {
+        return true;
+    }else {
+    	return false;
+    }
+} 
+
+
+public static  User readObjectsFromFile(String Username, User uIn) { //returns an object of type user, loads information from files for specified user
+    ArrayList<Expense> expenseList = new ArrayList<>();
+    ArrayList<Income> incomeList = new ArrayList<>();
+    User returnable = new User();
+    
+    try (BufferedReader reader = new BufferedReader(new FileReader(Username + "Expenses.txt"))) {
+        String line;
+        while ((line = reader.readLine()) != null) {
+            String[] attributes = line.split(",");
+            if (attributes.length == 3) {
+                Expense obj = new Expense("default", 0, 0);
+                obj.source = attributes[0];
+                obj.amount = Double.parseDouble(attributes[1]);
+                obj.yearlyfrequency = Integer.parseInt(attributes[2]);
+                expenseList.add(obj);
+            }
+        }
+        reader.close();
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+    try (BufferedReader reader = new BufferedReader(new FileReader(Username + "Incomes.txt"))) {
+        String line;
+        while ((line = reader.readLine()) != null) {
+            String[] attributes = line.split(",");
+            if (attributes.length == 3) {
+                Income obj = new Income();
+                obj.source = attributes[0];
+                obj.amount = Double.parseDouble(attributes[1]);
+                obj.Month = attributes[2];
+                incomeList.add(obj);
+            }
+        }
+        reader.close();
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+    
+    returnable.incomes.addAll(incomeList);
+    returnable.Spending.addAll(expenseList);
+    
+    
+    return returnable;
+}
+
 
 }
