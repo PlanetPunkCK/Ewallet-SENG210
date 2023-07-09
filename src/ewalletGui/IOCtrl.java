@@ -105,8 +105,6 @@ return returnable;
 };
 
 
-
-
 public boolean makeReport(User writeData, String filename){
     
     boolean success = false;
@@ -148,6 +146,7 @@ public boolean makeReport(User writeData, String filename){
     return success;
 }
 
+
 public static boolean writeObjectsToFile(User uIn) { //returns void, writes information from given user
     boolean a = false;
     boolean b = false;
@@ -177,6 +176,65 @@ public static boolean writeObjectsToFile(User uIn) { //returns void, writes info
     	return false;
     }
 } 
+
+
+public static boolean writeIncomesToReport(User uIn) { //returns boolean, writes information from given user to report with a few stats and all incomes in a comma seperated list
+
+
+    try (PrintWriter writer = new PrintWriter(new FileWriter(uIn.getUsername() +"Incomes.txt"))) {
+
+            writer.println("Income report for: "  + uIn.getUsername());
+            writer.println("# of incomes: " + uIn.incomes.size());
+            
+
+            double num = 0;
+        for (Income tmp : uIn.incomes){
+            num += tmp.amount;
+        } 
+            writer.println("total amount in balance: $"+ num);
+            writer.println("_____individual expenses_____");
+            writer.println("Sources,  Amounts,  Month");
+        for (Income obj : uIn.incomes) {
+            // Assuming the object has three attributes: attr1, attr2, attr3
+            writer.println(obj.source + ", " + obj.amount + ", " + obj.Month);
+        }
+        
+        writer.close();
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+    return true;
+}
+
+
+public static boolean writeExpensesToReport(User uIn){
+    
+    
+    try (PrintWriter writer = new PrintWriter(new FileWriter(uIn.getUsername() +"Incomes.txt"))) {
+
+            writer.println("Income report for: "  + uIn.getUsername());
+            writer.println("# of Expenses: " + uIn.incomes.size());
+            
+
+            double num = 0;
+        for (Expense tmp : uIn.Spending){
+            num += tmp.amount;
+        } 
+            writer.println("total amount in balance: $"+ num);
+            writer.println("_____individual expenses_____");
+            writer.println("Sources,  Amounts,  YearlyFrequency");
+        for (Expense obj : uIn.Spending) {
+            // Assuming the object has three attributes: attr1, attr2, attr3
+            writer.println(obj.source + ", " + obj.amount + ", " + obj.yearlyfrequency);
+        }
+        
+        writer.close();
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+    
+    return true;
+}
 
 
 public static  User readObjectsFromFile(String Username, User uIn) { //returns an object of type user, loads information from files for specified user

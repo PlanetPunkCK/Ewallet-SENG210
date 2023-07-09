@@ -25,7 +25,15 @@ public class User {
 		username = "unset";
 		pwd = "unset";
 	}
+
 	
+	public boolean addXpense(Expense eIn){// USE THIS TO ADD ESPENSES
+		
+		this.balance += eIn.amount;
+		return this.Spending.add(eIn);
+		
+
+	}
 	public String getUsername() {
 	    return username;
 	}
