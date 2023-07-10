@@ -237,6 +237,90 @@ public static boolean writeExpensesToReport(User uIn){
 }
 
 
+public static boolean makeIncomeReportOfSrc(User uIn, String srcIn){ //returns boolean, use for filtered output mathing string srcIn
+    
+    User uNew = uIn;
+    uNew.incomes.clear();
+
+
+    for (Income tmp : uIn.incomes){
+            if(tmp.source == srcIn){
+                uNew.incomes.add(tmp);
+            }
+        } 
+
+    try (PrintWriter writer = new PrintWriter(new FileWriter(uIn.getUsername() +"filteredIncomes.txt"))) {
+
+            writer.println("Income report for: "  + uIn.getUsername());
+            writer.println("# of incomes: " + uNew.incomes.size());
+            
+
+            double num = 0;
+        for (Income tmp : uNew.incomes){
+            num += tmp.amount;
+        } 
+            writer.println("total amount in balance: $"+ num);
+            writer.println("Number of source " + srcIn + ": " + );
+            writer.println("_____individual Incomes_____");
+            writer.println("Sources,  Amounts,  Month");
+        for (Income obj : uIn.incomes) {
+            // Assuming the object has three attributes: attr1, attr2, attr3
+            writer.println(obj.source + ", " + obj.amount + ", " + obj.Month);
+        }
+        
+        writer.close();
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+    
+
+    return true;
+
+}
+
+
+public static boolean makeExpenseReportOfSrc(User uIn, String srcIn){
+
+    User uNew = uIn;
+    uNew.Spending.clear();
+
+
+    for (Expense tmp : uIn.Spending){
+            if(tmp.source == srcIn){
+                uNew.Spending.add(tmp);
+            }
+        } 
+
+    try (PrintWriter writer = new PrintWriter(new FileWriter(uIn.getUsername() +"filteredIncomes.txt"))) {
+
+            writer.println("Spending report for: "  + uIn.getUsername());
+            writer.println("# of incomes: " + uNew.incomes.size());
+            
+
+            double num = 0;
+        for (Income tmp : uNew.incomes){
+            num += tmp.amount;
+        } 
+            writer.println("total amount in balance: $"+ num);
+            writer.println("Number of source " + srcIn + ": " + );
+            writer.println("_____individual Incomes_____");
+            writer.println("Sources,  Amounts,  Month");
+        for (Income obj : uIn.incomes) {
+            // Assuming the object has three attributes: attr1, attr2, attr3
+            writer.println(obj.source + ", " + obj.amount + ", " + obj.Month);
+        }
+        
+        writer.close();
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+    
+
+    return true;
+}
+
+
+
 public static  User readObjectsFromFile(String Username, User uIn) { //returns an object of type user, loads information from files for specified user
     ArrayList<Expense> expenseList = new ArrayList<>();
     ArrayList<Income> incomeList = new ArrayList<>();
