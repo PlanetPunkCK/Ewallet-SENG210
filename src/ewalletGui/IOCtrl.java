@@ -252,7 +252,7 @@ public static boolean makeIncomeReportOfSrc(User uIn, String srcIn){ //returns b
     try (PrintWriter writer = new PrintWriter(new FileWriter(uIn.getUsername() +"filteredIncomes.txt"))) {
 
             writer.println("Income report for: "  + uIn.getUsername());
-            writer.println("# of incomes: " + uNew.incomes.size());
+            writer.println("# of incomes of type "+ srcIn+": " + uNew.incomes.size());
             
 
             double num = 0;
@@ -260,7 +260,6 @@ public static boolean makeIncomeReportOfSrc(User uIn, String srcIn){ //returns b
             num += tmp.amount;
         } 
             writer.println("total amount in balance: $"+ num);
-            writer.println("Number of source " + srcIn + ": " + );
             writer.println("_____individual Incomes_____");
             writer.println("Sources,  Amounts,  Month");
         for (Income obj : uIn.incomes) {
@@ -294,20 +293,20 @@ public static boolean makeExpenseReportOfSrc(User uIn, String srcIn){
     try (PrintWriter writer = new PrintWriter(new FileWriter(uIn.getUsername() +"filteredIncomes.txt"))) {
 
             writer.println("Spending report for: "  + uIn.getUsername());
-            writer.println("# of incomes: " + uNew.incomes.size());
+            writer.println("# of incomes: " + uNew.Spending.size());
             
 
             double num = 0;
-        for (Income tmp : uNew.incomes){
+        for (Expense tmp : uNew.Spending){
             num += tmp.amount;
         } 
             writer.println("total amount in balance: $"+ num);
             writer.println("Number of source " + srcIn + ": " + );
-            writer.println("_____individual Incomes_____");
+            writer.println("_____Individual Expenses_____");
             writer.println("Sources,  Amounts,  Month");
-        for (Income obj : uIn.incomes) {
+        for (Expense obj : uIn.Spending) {
             // Assuming the object has three attributes: attr1, attr2, attr3
-            writer.println(obj.source + ", " + obj.amount + ", " + obj.Month);
+            writer.println(obj.source + ", " + obj.amount + ", " + obj.yearlyfrequency);
         }
         
         writer.close();
