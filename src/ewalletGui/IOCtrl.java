@@ -25,7 +25,7 @@ import java.util.ArrayList;
  *      -stores Built line in ArrayList "lines" of type String 
  *      -RETURNS: lines 
  * 
- * -write expense and income saveing 
+ * -write expense and income saving 
  * 
  * 
  * -Write filter method for income and expense reports
@@ -301,7 +301,7 @@ public static boolean makeExpenseReportOfSrc(User uIn, String srcIn){
             num += tmp.amount;
         } 
             writer.println("total amount in balance: $"+ num);
-            writer.println("Number of source " + srcIn + ": " + );
+            writer.println("Number of source " + srcIn + ": ");
             writer.println("_____Individual Expenses_____");
             writer.println("Sources,  Amounts,  Month");
         for (Expense obj : uIn.Spending) {

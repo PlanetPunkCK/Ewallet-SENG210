@@ -100,7 +100,7 @@ public class addIncome extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				if(e.getSource() == addbtn) {
 					// access the curUser and add income/incomes
-					String curUser = User.username;
+					User curUser = new User();
 					curUser.incomes.add(new Income(src, amt, Mnth));
 					totalIncomes += amt;
 				}

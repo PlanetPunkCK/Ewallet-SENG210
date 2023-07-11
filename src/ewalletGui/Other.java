@@ -9,11 +9,18 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JButton;
 import java.awt.Font;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
 
 public class Other extends JFrame {
 
 	private JPanel contentPane;
-
+	private JTextField incField;
+	private JTextField expField;
+	// double totalIncomes =  ;
+	// double totalExpenses = ;
+	
+	
 	/**
 	 * Launch the application.
 	 */
@@ -42,6 +49,9 @@ public class Other extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
+		
+		
+		
 		JButton Mbtn = new JButton("Main Menu");
 		Mbtn.setFont(new Font("Tahoma", Font.PLAIN, 10));
 		Mbtn.setBounds(10, 230, 85, 20);
@@ -56,6 +66,31 @@ public class Other extends JFrame {
 			}
 		});
 		contentPane.add(Mbtn);
+		
+		JLabel lblNewLabel = new JLabel("TOTALS SUMMARY");
+		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		lblNewLabel.setBounds(159, 22, 160, 25);
+		contentPane.add(lblNewLabel);
+		
+		JLabel totalIncomesLabel = new JLabel("Total Incomes: ");
+		totalIncomesLabel.setFont(new Font("Tahoma", Font.BOLD, 14));
+		totalIncomesLabel.setBounds(70, 70, 120, 35);
+		contentPane.add(totalIncomesLabel);
+		
+		JLabel totalExpenseLabel = new JLabel("Total Expenses: ");
+		totalExpenseLabel.setFont(new Font("Tahoma", Font.BOLD, 14));
+		totalExpenseLabel.setBounds(70, 120, 120, 35);
+		contentPane.add(totalExpenseLabel);
+		
+				
+		incField = new JTextField();
+		incField.setBounds(195, 80, 96, 19);
+		contentPane.add(incField);
+		incField.setColumns(10);
+		
+		expField = new JTextField();
+		expField.setBounds(195, 130, 96, 19);
+		contentPane.add(expField);
+		expField.setColumns(10);
 	}
-
 }

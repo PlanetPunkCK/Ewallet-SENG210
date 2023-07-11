@@ -102,7 +102,7 @@ public class addExpense extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				if(e.getSource() == addbtn) {
 					// access the curUser and add expenses/spending
-					String curUser = User.username;
+					User curUser = new User();
 					curUser.Spending.add(new Expense(src[1], amt, yrFreq));
 				}
 			}
