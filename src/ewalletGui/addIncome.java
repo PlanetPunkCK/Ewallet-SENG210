@@ -6,6 +6,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -104,6 +106,10 @@ public class addIncome extends JFrame {
 					String Mnth = String.valueOf(monthComboBox.getSelectedItem());
 					curUser.incomes.add(new Income(srcChoice, amt, Mnth));
 					totalIncomes += amt;
+					JOptionPane.showMessageDialog(contentPane, "Income entry added successfully!");
+					srcBox.setSelectedIndex(0);
+					amountField.setText("");
+					monthComboBox.setSelectedIndex(0);
 				}
 			}
 		});
