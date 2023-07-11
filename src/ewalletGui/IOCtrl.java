@@ -110,8 +110,6 @@ public boolean makeReport(User writeData, String filename){
     boolean success = false;
     int repeats;
     
-
-    
     //automatically add header
     lines.add(headers);
 

@@ -7,6 +7,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
+
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -46,28 +48,37 @@ public class ExpenseReport extends JFrame {
 		// Title labels
 		JLabel titleLabel = new JLabel("EXPENSE REPORT");
 		titleLabel.setFont(new Font("Tahoma", Font.BOLD, 18));
-		titleLabel.setBounds(145, 20, 200, 30);
+		titleLabel.setBounds(145, 15, 200, 30);
 		contentPane.add(titleLabel);
 				
 		JLabel titleLabel2 = new JLabel("Export your expense information to a report!");
 		titleLabel2.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		titleLabel2.setBounds(100, 50, 265, 15);
+		titleLabel2.setBounds(100, 40, 270, 15);
 		contentPane.add(titleLabel2);
 				
 		JLabel titleLabel3 = new JLabel("(CSV File)");
 		titleLabel3.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		titleLabel3.setBounds(190, 75, 75, 15);
+		titleLabel3.setBounds(190, 60, 75, 15);
 		contentPane.add(titleLabel3);		
+		
+		// Source Choice
+		String expsrc[] = {"ALL", "Business", "Car Payment", "Clothing", "Groceries", "Mortgage", "Utilities"};
+		JComboBox srcBox = new JComboBox(expsrc);
+		srcBox.setBounds(170, 137, 100, 25);
+		contentPane.add(srcBox);
 				
 		// Buttons
 		// Export
 		JButton expbtn = new JButton("Export Now");
 		expbtn.setFont(new Font("Tahoma", Font.BOLD, 11));
-		expbtn.setBounds(170, 115, 105, 20);
+		expbtn.setBounds(165, 195, 105, 20);
 		expbtn.addActionListener(new ActionListener () {
 			public void actionPerformed(ActionEvent e) {
 				if(e.getSource() == expbtn) {
-					
+					IOCtrl expReport = new IOCtrl();
+					User uIn = new User();
+					String srcChoice = String.valueOf(srcBox.getSelectedItem());
+					expReport.makeReport(uIn, srcChoice);
 				}
 			}
 			
@@ -88,6 +99,11 @@ public class ExpenseReport extends JFrame {
 			}
 		});
 		contentPane.add(Mbtn);
+		
+		JLabel titleLabel4 = new JLabel("Choose Expense Source");
+		titleLabel4.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		titleLabel4.setBounds(155, 115, 140, 15);
+		contentPane.add(titleLabel4);
 	}
 
 }

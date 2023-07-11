@@ -104,6 +104,7 @@ public class addExpense extends JFrame {
 					// access the curUser and add expenses/spending
 					User curUser = new User();
 					curUser.Spending.add(new Expense(src[1], amt, yrFreq));
+					totalExpenses += (amt * yrFreq);
 				}
 			}
 		});
