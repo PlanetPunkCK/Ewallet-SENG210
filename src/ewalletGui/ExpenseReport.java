@@ -4,6 +4,7 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JButton;
@@ -79,6 +80,7 @@ public class ExpenseReport extends JFrame {
 					User uIn = new User();
 					String srcChoice = String.valueOf(srcBox.getSelectedItem());
 					expReport.makeReport(uIn, srcChoice);
+					JOptionPane.showMessageDialog(contentPane, "Expense Report for " + srcBox.getSelectedItem() + " sources were created successfully!");
 				}
 			}
 			

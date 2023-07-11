@@ -95,21 +95,14 @@ public class EWalletApp extends JFrame {
 				if(e.getSource() == signinbtn) {
 					username = usernameField.getText();
 					pwd = pwdField.getText();
-					// for testing, delete later
-					System.out.println(username);
-					// for testing, delete later
-					System.out.println(pwd);
 					User curUser = new User(username, pwd);
-					JOptionPane.showMessageDialog(contentPane, "Hello " + curUser.toString() + "!");
+					JOptionPane.showMessageDialog(contentPane, "Hello " + curUser.getUsername() + "!");
 					usernameField.setText("");
 					pwdField.setText("");
-					
 				}				
 			}
-					
 		});
-		// for testing delete later
-		System.out.println("Current User is: " + curUser.toString());
+		
 		contentPane.add(signinbtn);
 		
 		// Title Labels

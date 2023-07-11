@@ -12,6 +12,7 @@ import java.awt.GridLayout;
 import java.awt.Font;
 import javax.swing.JLabel;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.JComboBox;
 
 public class IncomeReport extends JFrame {
@@ -82,6 +83,7 @@ public class IncomeReport extends JFrame {
 					User uIn = new User();
 					String srcChoice = String.valueOf(srcBox.getSelectedItem());
 					incReport.makeReport(uIn, srcChoice);
+					JOptionPane.showMessageDialog(contentPane, "Income Report for " + srcBox.getSelectedItem() + " sources were created successfully!");
 				}
 			}
 			
