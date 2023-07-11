@@ -63,7 +63,7 @@ public class ExpenseReport extends JFrame {
 		contentPane.add(titleLabel3);		
 		
 		// Source Choice
-		String expsrc[] = {"ALL", "Business", "Car Payment", "Clothing", "Groceries", "Mortgage", "Utilities"};
+		String expsrc[] = {"ALL", "Bills", "Business", "Car Payment", "Clothing", "Groceries", "Mortgage", "Repairs", "Tools", "Utilities"};
 		JComboBox srcBox = new JComboBox(expsrc);
 		srcBox.setBounds(170, 137, 100, 25);
 		contentPane.add(srcBox);

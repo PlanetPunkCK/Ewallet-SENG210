@@ -25,7 +25,6 @@ public class addExpense extends JFrame {
     
 	double totalExpenses = 0.0;
 	
-	String src[] = {"-", "Bills", "Business", "Clothing", "Groceries", "Tools"};
 	double amt;
 	int yrFreq;
 	
@@ -80,6 +79,7 @@ public class addExpense extends JFrame {
 		freqLabel.setBounds(40, 170, 125, 25);
 		contentPane.add(freqLabel);
 		
+		String src[] = {"-", "Bills", "Business", "Car Payment", "Clothing", "Groceries", "Mortgage", "Repairs", "Tools", "Utilities"};
 		JComboBox srcBox = new JComboBox(src);
 		srcBox.setBounds(185, 80, 90, 20);
 		contentPane.add(srcBox);
@@ -103,7 +103,8 @@ public class addExpense extends JFrame {
 				if(e.getSource() == addbtn) {
 					// access the curUser and add expenses/spending
 					User curUser = new User();
-					curUser.Spending.add(new Expense(src[1], amt, yrFreq));
+					String src = String.valueOf(srcBox.getSelectedItem());
+					curUser.Spending.add(new Expense(src, amt, yrFreq));
 					totalExpenses += (amt * yrFreq);
 				}
 			}

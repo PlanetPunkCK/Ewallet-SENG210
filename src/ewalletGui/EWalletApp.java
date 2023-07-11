@@ -148,7 +148,7 @@ public class EWalletApp extends JFrame {
 			}
 		});
 		addEbtn.setFont(new Font("Tahoma", Font.BOLD, 10));
-		addEbtn.setBounds(136, 191, 115, 25);
+		addEbtn.setBounds(135, 190, 120, 25);
 		addEbtn.setHorizontalAlignment(SwingConstants.LEFT);
 		contentPane.add(addEbtn);
 		
@@ -165,13 +165,13 @@ public class EWalletApp extends JFrame {
 			
 		});
 		addIbtn.setFont(new Font("Tahoma", Font.BOLD, 10));
-		addIbtn.setBounds(261, 191, 115, 25);
+		addIbtn.setBounds(260, 190, 120, 25);
 		contentPane.add(addIbtn);
 		
 		// Income Report
 		JButton iReportbtn = new JButton("Income Report");
 		iReportbtn.setFont(new Font("Tahoma", Font.BOLD, 10));
-		iReportbtn.setBounds(136, 226, 115, 25);
+		iReportbtn.setBounds(260, 225, 120, 25);
 		iReportbtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(e.getSource() == iReportbtn) {
@@ -188,7 +188,7 @@ public class EWalletApp extends JFrame {
 		// Expense Report
 		JButton eReportbtn = new JButton("Expense Report");
 		eReportbtn.setFont(new Font("Tahoma", Font.BOLD, 10));
-		eReportbtn.setBounds(261, 226, 115, 25);
+		eReportbtn.setBounds(135, 225, 120, 25);
 		eReportbtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(e.getSource() == eReportbtn) {
@@ -203,7 +203,7 @@ public class EWalletApp extends JFrame {
 		// Other Stats
 		JButton statsbtn = new JButton("Quick Stats");
 		statsbtn.setFont(new Font("Tahoma", Font.BOLD, 10));
-		statsbtn.setBounds(136, 261, 115, 25);
+		statsbtn.setBounds(135, 260, 120, 25);
 		statsbtn.addActionListener(new ActionListener () {
 			public void actionPerformed(ActionEvent e) {
 				if(e.getSource() == statsbtn) {
@@ -219,7 +219,7 @@ public class EWalletApp extends JFrame {
 		// Quit
 		JButton quitbtn = new JButton("Quit");
 		quitbtn.setFont(new Font("Tahoma", Font.BOLD, 10));
-		quitbtn.setBounds(261, 261, 115, 25);
+		quitbtn.setBounds(260, 260, 120, 25);
 		quitbtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(e.getSource() == quitbtn) {

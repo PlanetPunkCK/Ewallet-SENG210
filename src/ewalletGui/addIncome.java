@@ -17,7 +17,6 @@ import javax.swing.JButton;
 public class addIncome extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField sourceField;
 	private JTextField amountField;
 	
 	Income tempIncome;
@@ -65,6 +64,11 @@ public class addIncome extends JFrame {
 		srcLabel.setBounds(40, 75, 60, 30);
 		contentPane.add(srcLabel);
 		
+		String src[] = {"-", "Main Office", "Rentals", "Royalties", "Side Jobs"};
+		JComboBox srcBox = new JComboBox(src);
+		srcBox.setBounds(175, 80, 85, 20);
+		contentPane.add(srcBox);
+		
 		JLabel amtLabel = new JLabel("Amount:");
 		amtLabel.setFont(new Font("Tahoma", Font.BOLD, 11));
 		amtLabel.setBounds(40, 115, 80, 25);
@@ -75,13 +79,8 @@ public class addIncome extends JFrame {
 		monthLabel.setBounds(40, 170, 125, 25);
 		contentPane.add(monthLabel);
 		
-		sourceField = new JTextField();
-		sourceField.setBounds(175, 81, 96, 19);
-		contentPane.add(sourceField);
-		sourceField.setColumns(10);
-		
 		amountField = new JTextField();
-		amountField.setBounds(175, 118, 96, 19);
+		amountField.setBounds(175, 120, 85, 20);
 		contentPane.add(amountField);
 		amountField.setColumns(10);
 		
@@ -89,7 +88,7 @@ public class addIncome extends JFrame {
 		JComboBox monthComboBox = new JComboBox(months);
 		monthComboBox.setFont(new Font("Tahoma", Font.BOLD, 11));
 		monthComboBox.setMaximumRowCount(12);
-		monthComboBox.setBounds(175, 172, 85, 21);
+		monthComboBox.setBounds(175, 172, 85, 20);
 		contentPane.add(monthComboBox);
 		
 		
@@ -101,7 +100,9 @@ public class addIncome extends JFrame {
 				if(e.getSource() == addbtn) {
 					// access the curUser and add income/incomes
 					User curUser = new User();
-					curUser.incomes.add(new Income(src, amt, Mnth));
+					String srcChoice = String.valueOf(srcBox.getSelectedItem());
+					String Mnth = String.valueOf(monthComboBox.getSelectedItem());
+					curUser.incomes.add(new Income(srcChoice, amt, Mnth));
 					totalIncomes += amt;
 				}
 			}
@@ -114,7 +115,7 @@ public class addIncome extends JFrame {
 		clearbtn.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e) {
 				if(e.getSource() == clearbtn) {
-					sourceField.setText("");
+					srcBox.setSelectedIndex(0);
 					amountField.setText("");
 					monthComboBox.setSelectedIndex(0);
 				}
@@ -137,6 +138,5 @@ public class addIncome extends JFrame {
 			}
 		});
 		contentPane.add(Mbtn);
-		
 	}
 }
