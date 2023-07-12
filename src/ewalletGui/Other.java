@@ -3,7 +3,6 @@ package ewalletGui;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -17,8 +16,11 @@ public class Other extends JFrame {
 	private JPanel contentPane;
 	private JTextField incField;
 	private JTextField expField;
-	// double totalIncomes =  ;
-	// double totalExpenses = ;
+	addIncome inc = new addIncome();
+	addExpense exp = new addExpense();
+	
+	double totalIncomes = inc.totalIncomes;
+	double totalExpenses = exp.totalExpenses;
 	
 	
 	/**
@@ -84,12 +86,18 @@ public class Other extends JFrame {
 		
 				
 		incField = new JTextField();
-		incField.setBounds(195, 80, 96, 19);
+		incField.setEditable(false);
+		incField.setBounds(195, 80, 96, 20);
+		String inc = String.valueOf(totalIncomes);
+		incField.setText(inc);
 		contentPane.add(incField);
 		incField.setColumns(10);
 		
 		expField = new JTextField();
-		expField.setBounds(195, 130, 96, 19);
+		expField.setEditable(false);
+		expField.setBounds(195, 130, 96, 20);
+		String exp =String.valueOf(totalExpenses);
+		expField.setText(exp);
 		contentPane.add(expField);
 		expField.setColumns(10);
 	}

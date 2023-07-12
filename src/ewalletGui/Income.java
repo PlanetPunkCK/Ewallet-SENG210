@@ -15,5 +15,5 @@ public class Income {
 		this.amount = 0;
 		this.Month = "default";
 	}
-	//should add contructor(s)
+	
 }
