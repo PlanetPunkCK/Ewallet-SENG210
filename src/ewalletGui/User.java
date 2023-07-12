@@ -6,7 +6,7 @@ public class User {
 	public ArrayList <Income>incomes;  // user income sources that user can record or view or search by type or month 
 	public ArrayList <Expense>Spending; //user's expenses 
 	static String username;
-	String pwd;
+	static String pwd;
 	//current total income - total 
 	double balance;
 	// possible monthly savings, calculated using monthly income (most recent) assuming the data we have is for one year, and monthly and biweekly expenses, here you can assume yearly expenses that are recorded have already been paid. 
@@ -34,7 +34,11 @@ public class User {
 		
 
 	}
-	public String getUsername() {
+	static String getUsername() {
 	    return username;
+	}
+	
+	static String getPwd() {
+		return pwd;
 	}
 }

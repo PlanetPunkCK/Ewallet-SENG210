@@ -81,8 +81,8 @@ public class IncomeReport extends JFrame {
 				if(e.getSource() == expbtn) {
 					IOCtrl incReport = new IOCtrl();
 					User uIn = new User();
-					String srcChoice = String.valueOf(srcBox.getSelectedItem());
-					incReport.makeReport(uIn, srcChoice);
+					//String srcChoice = String.valueOf(srcBox.getSelectedItem());
+					incReport.makeReport(uIn, uIn.getUsername());
 					JOptionPane.showMessageDialog(contentPane, "Income Report for " + srcBox.getSelectedItem() + " sources were created successfully!");
 				}
 			}

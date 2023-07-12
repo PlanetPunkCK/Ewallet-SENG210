@@ -26,6 +26,8 @@ public class addIncome extends JFrame {
 	String src;
 	String Mnth;
 	double amt;
+	User user = new User(User.getUsername(), User.getPwd());
+	
 
 	/**
 	 * Launch the application.
@@ -101,10 +103,11 @@ public class addIncome extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				if(e.getSource() == addbtn) {
 					// access the curUser and add income/incomes
-					User curUser = new User();
+					
 					String srcChoice = String.valueOf(srcBox.getSelectedItem());
 					String Mnth = String.valueOf(monthComboBox.getSelectedItem());
-					curUser.incomes.add(new Income(srcChoice, amt, Mnth));
+					
+					user.incomes.add(new Income(srcChoice, amt, Mnth));
 					totalIncomes += amt;
 					JOptionPane.showMessageDialog(contentPane, "Income entry added successfully!");
 					srcBox.setSelectedIndex(0);
