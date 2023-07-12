@@ -91,30 +91,31 @@ public boolean makeReport(User uIn, String filename){
         
         writer.println(this.headers);
         
-            for (int i = 0; i< longer; i++){
+            for (int i = 0; i < longer; i++){
 
                 if (i < shorter){
                     tmpIncome = uIn.incomes.get(i);
                     tmpExpense = uIn.Spending.get(i);
-                    writer.println(tmpIncome.source + "," + tmpIncome.amount + "," + tmpIncome.Month + "," 
-                                + tmpExpense.source + "," + tmpExpense.amount + "," + tmpExpense.yearlyfrequency);
-                }else if (i > expenseLen && i < longer){
+                    String tmp = tmpIncome.source + "," + tmpIncome.amount + "," + tmpIncome.Month + "," 
+                                + tmpExpense.source + "," + tmpExpense.amount + "," + tmpExpense.yearlyfrequency;
+                    writer.println(tmp);
+                }else if (i >= expenseLen && i < longer){
                     tmpIncome = uIn.incomes.get(i);
                  writer.println(tmpIncome.source + "," + tmpIncome.amount + "," + tmpIncome.Month + "," 
                                 +  ","  + "," );
           
-                }else if (i > incomeLen && i < longer){
+                }else if (i >= incomeLen && i < longer){
                     tmpExpense = uIn.Spending.get(i);
                      writer.println("," + "," + "," 
                                 + tmpExpense.source + "," + tmpExpense.amount + "," + tmpExpense.yearlyfrequency);
           
 
-              }else{
+                 }else{
                     writer.close();
                     return true;
-             }
+                }
     
-        }
+            }
     } catch (IOException e) {
         e.printStackTrace();
         return false;
