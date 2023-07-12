@@ -61,87 +61,93 @@ public IOCtrl(){
 
 
 
-private String lineBuilder(User buildData, int index){
-//todo: 
-//-enable functionality to allow for cvs to have blank spots where no values exist 
-// such as in the case of more user has more expenses than incomes or vice versa
-String returnable;
-String blankline = ",,,";
 
 
+public boolean makeReport(User uIn, String filename){
+    
 
-if (index > buildData.Spending.size()){ //if index is larger than size of spending, ommit spending from returned string
-    Income incIemp = buildData.incomes.get(index);
+    int incomeLen = uIn.incomes.size();
+    int expenseLen = uIn.Spending.size();
+    int longer;
+    int shorter;
+    Expense tmpExpense;
+    Income tmpIncome;
+
    
 
-    returnable = incIemp.source + ","
-                +incIemp.amount + ","
-                +incIemp.Month + 
-                blankline;
-
-}else if(index > buildData.incomes.size()){ //if index is larger than size ofo incomes, omit incomes from returned string
-    
-    Expense exTemp = buildData.Spending.get(index);
-
-    returnable = blankline
-                +exTemp.amount + "," 
-                +exTemp.source + ","
-                +exTemp.yearlyfrequency;
-
-}else{//else, it must be within range and all can be returned in formatted return string
-    Income incIemp = buildData.incomes.get(index);
-    Expense exTemp = buildData.Spending.get(index);
-
-    returnable = incIemp.source + ","
-                +incIemp.amount + ","
-                +incIemp.Month + ","
-                +exTemp.amount + "," 
-                +exTemp.source + ","
-                +exTemp.yearlyfrequency;
-}
-
-
-return returnable;
-};
-
-
-public boolean makeReport(User writeData, String filename){
-    
-    boolean success = false;
-    int repeats;
-    
-    //automatically add header
-    lines.add(headers);
-
-    //determine how many rows will be in final report by the size of the larger of the incomes or spending lists
-    if (writeData.incomes.size()> writeData.Spending.size()){
-        repeats = writeData.Spending.size();
+    if (incomeLen > expenseLen){
+        longer = incomeLen;
+        shorter = expenseLen;
+    }else if (expenseLen > incomeLen){
+        longer = expenseLen;
+        shorter = incomeLen;
     }else{
-        repeats = writeData.incomes.size();
+        shorter = expenseLen;
+        longer = expenseLen;
     }
 
-    //build lines with lineBuilder 
-    for (int j = 0; j < repeats; j++){
-        lines.add(lineBuilder(writeData, j));
-    }
 
-    //meat and potatoes, using printwriter to print lines built above to a file with header of .csv
-    try {
-        PrintWriter output = new PrintWriter(filename + ".csv");
+	try (PrintWriter writer = new PrintWriter(new FileWriter(filename +".csv"))) {
         
+        writer.println(this.headers);
+        
+            for (int i = 0; i< longer; i++){
 
-        output.println(headers);
-        for(int i = 0; i<repeats;i++){
-        output.println(lines.get(i));
+                if (i < shorter){
+                    tmpIncome = uIn.incomes.get(i);
+                    tmpExpense = uIn.Spending.get(i);
+                    writer.println(tmpIncome.source + "," + tmpIncome.amount + "," + tmpIncome.Month + "," 
+                                + tmpExpense.source + "," + tmpExpense.amount + "," + tmpExpense.yearlyfrequency);
+                }else if (i > expenseLen && i < longer){
+                    tmpIncome = uIn.incomes.get(i);
+                 writer.println(tmpIncome.source + "," + tmpIncome.amount + "," + tmpIncome.Month + "," 
+                                +  ","  + "," );
+          
+                }else if (i > incomeLen && i < longer){
+                    tmpExpense = uIn.Spending.get(i);
+                     writer.println("," + "," + "," 
+                                + tmpExpense.source + "," + tmpExpense.amount + "," + tmpExpense.yearlyfrequency);
+          
+
+              }else{
+                    writer.close();
+                    return true;
+             }
+    
         }
-        output.close();
-        success = true;//should have output csv properly if you get here, success 
+    } catch (IOException e) {
+        e.printStackTrace();
+        return false;
     }
-    catch(Exception e) {
-        e.getStackTrace();
-        success = false;//if you're here, something's wrong
-    }
-    return success;
+   
+return true;
+/*
+ * goal: incomes and expenses written to csv with longer list
+ *         outputting next to empty field values
+ * 
+ * index control vars:
+ * get size of both lists
+ * store into vars longer and shorter respectively
+ * 
+ * 
+ * procedure
+ * write headers
+ * get size of both lists
+ * store into vars longer and shorter respectively
+ * 
+ * 
+ * possible write states and conditions for existance:
+ *      -both lists
+ *          -index is less than shortest var
+ *      -income list write and right columns blank
+            -index is more than incomelist size but less than longest list
+ *      -left columns blank and expense list blank
+ *          -index is less than expenselist size but less than longest list
+ *      -finished
+ *          -index has reached max value and writing ends, return true
+ * 
+ */
+   
 }
 
 
@@ -299,7 +305,7 @@ public static boolean makeExpenseReportOfSrc(User uIn, String srcIn){
             num += tmp.amount;
         } 
             writer.println("total amount in balance: $"+ num);
-            writer.println("Number of source " + srcIn + ": ");
+            writer.println("Number of source " + srcIn + ": " + uNew.Spending.size());
             writer.println("_____Individual Expenses_____");
             writer.println("Sources,  Amounts,  Month");
         for (Expense obj : uIn.Spending) {
